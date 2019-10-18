@@ -11,5 +11,5 @@ have fun ! ! ! !
 
 Done with:
 - [Pac-nam](https://github.com/pac-nam)
-- [Nsikora](https://github.com/nsikora)
+- [bnoufel](https://github.com/bnoufel)
 - [Arnauz94](https://github.com/arnauz94)
