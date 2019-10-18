@@ -51,5 +51,3 @@ Réalise sur la base de: `https://www.exploit-db.com/exploits/40839`
 # id
 uid=0(pac-man) gid=0(root) groups=0(root)
 ```
-
-![I am root](./ress/root2.gif)

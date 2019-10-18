@@ -82,14 +82,12 @@ mdp: `330b845f32185747e4f8ca15d40ca59796035c89ea809fb5d30f4da83ecf45a4`
 On peut voir qu'il fait une comparaison entre l'entrée utilisateur et une chaine de caractères en dur.
 ![Phase 1](./ress/phase_1.png)<br>
 `Public speaking is very easy.`<br>
-<img src="./ress/publicSpeaking.jpg" width="200" height="200"/>
 ### STEP 2
 On peut voir que 6 arguments sont attendus et que le premier argument est `1` puis l'argument est multiplié par son emplacement.<br>
 Le premier argument est à l'emplacement 2.<br>
 ![Phase 2](./ress/phase_2.png)<br>
 Reste à faire le calcul, ce qui donne:<br>
 `1 2 6 24 120 720`<br>
-<img src="./ress/fibonacci.jpeg" width="200" height="200"/>
 ### STEP 3
 On peut voir que la solution ressemble à `%d %c %d` soit: nombre, caractère, nombre.<br>
 ![Phase 3](./ress/phase_3.png)<br>
@@ -98,7 +96,6 @@ que si le premier vaut 1 le char est b, et le dernier argument doit-être égal 
 soit:<br>
 `1 b 214`<br>
 ![Phase 3](./ress/phase_3_2.png)
-<img src="./ress/rtfm.png" width="200" height="200"/>
 
 ### STEP 4
 D'après cette fonction, on peut déterminer que `param_1` doit valoir **`9`**.<br>
@@ -106,7 +103,6 @@ D'après cette fonction, on peut déterminer que `param_1` doit valoir **`9`**.<
 On peut trouver ce résultat grâce à la fonction présentée dans "_ressources/writup1/phase_4.c_".<br>
 Il est à noter que c'est la seule étape pour laquelle le nombre d'arguments n'est pas vérifié.<br>
 En entrant non pas `9`, mais `9 austinpowers`, une phase secrete apparaitra après la phase 6.<br>
-<img src="./ress/austinpowers.jpg" width="200" height="200"/>
 
 ### STEP 5
 La chaine attendue est une chaine de 6 caractères dont le premier est un 'o'.<br>
@@ -122,13 +118,10 @@ soit:
 
 `opekmq`
 
-<img src="./ress/norris.jpeg" width="200" height="200"/>
-
 ### STEP 6
 
 6 chiffres sont attendus allant de 1 à 6 sans doublons. Le premiers chiffre est 4.<br>
 `4 2 6 3 1 5`<br>
-<img src="./ress/saitama.png" width="200" height="200"/>
 
 ### SECRET STEP
 
@@ -136,7 +129,6 @@ En ayant entré `9 austinpowers` lors de la phase 4, une étape secrète apparai
 Un seul nombre est attendu ici, ce nombre doit être supérieur à 1000.<br>
 Il s'agit de `1001` (0b1001 == 9).<br>
 voilà voilà...<br>
-<img src="./ress/cantargue.jpg" width="200" height="200"/>
 
 ## CONNECTION TO THOR
 
@@ -145,7 +137,6 @@ En concatenant les mots de passe précedent (sans espaces), nous obtenons le mot
 Sur le forum, est dit d'inverser les lettres 'v' et 'w' qui sont les dernieres lettres de l'alphabet -2 et -3<br>
 Ce qui donne le mot de passe final: <br>
 ```Publicspeakingisveryeasy.126241207201b2149opekmq426135```<br>
-<img src="./ress/wat.jpg" width="200" height="200"/>
 
 ## CONNECTION TO ZAZ
 
