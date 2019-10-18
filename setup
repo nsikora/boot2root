@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+RED="\033[31;1m"
+GREEN="\033[32;1m"
+BLUE="\033[34;1m"
+RESET="\033[0m"
+EXEC=`pwd`
+GROINFRE="${HOME}/goinfre"
+
+if [ -z $1 ]; then
+	echo -e "${RED}Please add VMNAME"
+	exit 1   
+fi
+echo -e "${BLUE}Cleanup${RESET}"
+if [ -d "${GROINFRE}/dirb" ]; then
+	rm -rf ${GROINFRE}/dirb
+fi
+if [ -d "${GROINFRE}/ghidra_9.1-BETA_DEV" ]; then
+	rm -rf ${GROINFRE}/ghidra_9.1-BETA_DEV
+fi
+if [ -d "${GROINFRE}/jdk-13.jdk" ]; then
+	rm -rf ${GROINFRE}/jdk-13.jdk
+fi
+echo -e "${GREEN}Cleanup OK !${RESET}"
+
+echo -e "${BLUE}Installation de Dirb.${RESET}"
+./scripts/install_dirb 1>/dev/null 2>&1
+echo -e "${GREEN}Dirb installed !${RESET}"
+
+echo -e "${BLUE}Installation de OpenJDK.${RESET}"
+./scripts/install_openjdk 1>/dev/null 2>&1
+echo -e "${GREEN}OpenJDK installed !${RESET}"
+
+echo -e "${BLUE}Installation de Gdb Peda.${RESET}"
+git clone https://github.com/longld/peda.git ~/goinfre/peda 1>/dev/null 2>&1
+
+if [ ! -f "${HOME}/.gdbinit" ]; then
+	touch ${HOME}/.gdbinit
+fi
+
+if [ -z "$(cat ~/.gdbinit | grep -i "source ~/goinfre/peda/peda.py")" ]; then
+	echo "source ~/goinfre/peda/peda.py" >> ~/.gdbinit
+fi
+echo -e "${GREEN}Gdb Peda installed !${RESET}"
+
+echo -e "${BLUE}Installation de Ghidra.${RESET}"
+cd ~/goinfre
+curl -O https://ghidra-sre.org/ghidra_9.1-BETA_DEV_20190923.zip 1>/dev/null 2>&1
+unzip ghidra_9.1-BETA_DEV_20190923.zip 1>/dev/null 2>&1
+rm -rf ghidra_9.1-BETA_DEV_20190923.zip
+echo -e "${GREEN}Ghidra installed !${RESET} (~/goinfre/ghidra_9.1-BETA_DEV)"
+
+echo -e "If Ghidra don't find jdk 11+, please add this line : ${RED}~/goinfre/jdk-13.jdk/Contents/Home/bin${RESET}"
+
+cd ${EXEC}
+echo "Ip de la VM $1: " $(./ip_machine $1)
+
+echo -e "${BLUE}Reset Docker.${RESET}"
+rm -rf ~/Library/Containers/com.docker.docker
+rm -rf ~/.docker
+rm -rf /goinfre/${USER}/docker /goinfre/${USER}/agent
+mkdir -p /goinfre/${USER}/docker /goinfre/${USER}/agent
+ln -s /goinfre/${USER}/agent ~/Library/Containers/com.docker.docker
+ln -s /goinfre/${USER}/docker ~/.docker
+echo -e "${GREEN}Docker OK !${RESET}"
+
+exec zsh

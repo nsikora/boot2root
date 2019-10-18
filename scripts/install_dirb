@@ -1,0 +1,20 @@
+EXEC=`pwd`
+
+cd ~/goinfre
+
+if [ -d "dirb" ]; then
+	rm -rf dirb
+fi
+
+git clone https://github.com/v0re/dirb.git
+cd dirb/
+./configure
+make
+
+cp wordlists/small.txt ${EXEC}
+
+if [ -z $(echo $PATH | grep -i dirb) ]; then
+	echo "export PATH=~/goinfre/dirb:${PATH}" >> ~/.zshrc
+fi
+
+cd ${EXEC}

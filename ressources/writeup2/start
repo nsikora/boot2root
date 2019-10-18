@@ -1,0 +1,7 @@
+cd /root
+wget -q http://dl.42.fr/BornToSecHackMe-v1.1.iso
+7z x BornToSecHackMe-v1.1.iso
+mkdir -p dump
+unsquashfs -f -d  dump  casper/filesystem.squashfs
+echo "And the password is :"
+cat dump/home/LOOKATME/password

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+RED="\033[31;1m"
+GREEN="\033[32;1m"
+RESET="\033[0m"
+
+if [ -z $1 ]; then
+	echo -e "${RED}Please add VMNAME !${RESET}"
+	exit 1;
+fi
+
+test_vm=$(VBoxManage guestproperty enumerate $1 2>&1 > /tmp/.hide)
+if [ $? -eq 1 ]; then
+	echo -e "${RED}Please add a good vm name${RESET}"
+	exit 1;
+fi
+ip=$(VBoxManage guestproperty enumerate $(VBoxManage list runningvms | grep $1 | cut -d '"' -f 2) | grep IP | grep value | cut -d ' ' -f 4 | cut -d ',' -f 1)
+echo -e ${ip}

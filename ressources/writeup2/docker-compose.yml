@@ -1,0 +1,8 @@
+version: '3.2'
+
+services:
+    ubuntu:
+        restart: always
+        container_name: boot2root
+        build:
+            context: .
